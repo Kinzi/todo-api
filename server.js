@@ -21,7 +21,6 @@ app.get('/todos', function(req, res) {
 
 	var where = {};
 
-
 	if (query.hasOwnProperty('completed') && query.completed === 'true') {
 		where.completed = true;
 	} else if (query.hasOwnProperty('completed') && query.completed === 'false') {
@@ -31,7 +30,7 @@ app.get('/todos', function(req, res) {
 	if (query.hasOwnProperty('q') && _.isString(query.q) && query.q.trim().length > 0) {
 		where.description = {
 			$like: '%' + query.q + '%'
-		}
+		};
 	}
 
 	db.todo.findAll({
